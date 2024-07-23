@@ -1,40 +1,45 @@
+require('dotenv').config();
+
 const express = require('express');
 const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
-
+const cors = require('cors'); // Importar o pacote cors
 const app = express();
 const port = 3000;
 
-// Middleware para parsear dados do corpo da requisição
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-
+// Configuração do transportador do nodemailer
 const transporter = nodemailer.createTransport({
-  service: 'gmail', 
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false, // true para 465, false para outras portas
   auth: {
-    user: 'cdajuniorf@gmail.com', 
-    pass: '1954matheus' 
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
   }
 });
 
-app.post('/enviar-email', (req, res) => {
-  const { name, email, message } = req.body;
+app.use(cors()); // Adicionar o middleware cors
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.post('/enviar-email', async (req, res) => {
+  const { nome, email, mensagem } = req.body;
 
   const mailOptions = {
     from: email,
-    to: 'cdajuniorf@gmail.com', 
-    subject: `Mensagem de ${name}`,
-    text: message
+    to: process.env.SMTP_USER,
+    subject: `Nova mensagem de ${nome}`,
+    text: mensagem,
+    html: `<p>${mensagem}</p>`
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error('Erro ao enviar e-mail:', error); 
-      return res.status(500).json({ message: 'Houve um erro ao enviar a mensagem.' });
-    }
-    res.status(200).json({ message: 'Mensagem enviada com sucesso!' });
-  });
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email enviado: ' + info.response);
+    res.status(200).json({ message: 'Email enviado com sucesso!' });
+  } catch (erro) {
+    console.error('Erro ao enviar email:', erro);
+    res.status(500).json({ message: `Houve um erro ao enviar a mensagem: ${erro.message}` });
+  }
 });
 
 app.listen(port, () => {
