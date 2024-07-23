@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Itamar Junior - Desenvolvedor Backend</title>
+  <meta name="description" content="Portfólio de Itamar Junior, desenvolvedor backend com experiência em PHP, Laravel e Node.js. Veja meus projetos e entre em contato.">
+  <meta name="keywords" content="desenvolvedor backend, PHP, Laravel, Node.js, portfólio, projetos">
+  <meta property="og:title" content="Itamar Junior - Desenvolvedor Backend">
+  <meta property="og:description" content="Portfólio de Itamar Junior, desenvolvedor backend com experiência em PHP, Laravel e Node.js. Veja meus projetos e entre em contato.">
+  <meta property="og:image" content="URL da imagem para compartilhamento">
+  <meta property="og:url" content="URL do seu portfólio">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Itamar Junior</h1>
+      <nav>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero">
+    <div class="hero-content">
+      <h2><br>Bem-vindo ao Meu Portfólio</h2>
+      <p>Desenvolvedor Backend | PHP | Laravel | Node.js</p>
+      <a href="#projetos" class="btn">Veja Meus Projetos</a>
+    </div>
+  </section>  
+
+  <section id="sobre">
+    <div class="container">
+      <h2>Sobre Mim</h2>
+      <p>Sou um desenvolvedor backend de 27 anos, natural do Rio Grande do Sul, com 6 anos de experiência em tecnologia. Atualmente, estou no último semestre do curso de Sistemas de Informação na Universidade Franciscana (UFN). Tenho conhecimento em PHP, Laravel e Node.js, e busco sempre soluções eficientes para problemas complexos.</p>
+
+      <p>No meu tempo livre, gosto de jogar jogos online e assistir a vídeos educativos de canais como Curso em Vídeo, Edson Maia e Victor Lima - Ciência da Computação. Sou ativo na comunidade de desenvolvedores, participando de cursos da Rocketseat e DevMedia, e possuo diversos certificados que refletem minha dedicação ao aprendizado contínuo.</p>
+        
+      <p>Atualmente, estou envolvido em projetos freelancers, aplicando minhas habilidades para aprimorar meu conhecimento.</p>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <div class="container">
+      <h2>Meus Projetos</h2>
+      <div class="grid">
+        <div class="projeto">
+          <img src="assets/projeto1.jpg" alt="Projeto 1">
+          <h3>Projeto 1</h3>
+          <p>Descrição do projeto 1.</p>
+          <a href="#" class="btn-projeto">Ver mais</a>
+        </div>
+        <div class="projeto">
+          <img src="assets/projeto2.jpg" alt="Projeto 2">
+          <h3>Projeto 2</h3>
+          <p>Descrição do projeto 2.</p>
+          <a href="#" class="btn-projeto">Ver mais</a>
+        </div>
+        <div class="projeto">
+          <img src="assets/projeto3.jpg" alt="Projeto 3">
+          <h3>Projeto 3</h3>
+          <p>Descrição do projeto 3.</p>
+          <a href="#" class="btn-projeto">Ver mais</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="container">
+      <h2>Contato</h2>
+<form id="contact-form" action="/enviar-email" method="POST">
+  <input type="text" name="name" placeholder="Seu Nome" required>
+  <input type="email" name="email" placeholder="Seu Email" required>
+  <textarea name="message" placeholder="Sua Mensagem" required></textarea>
+  <button type="submit">Enviar</button>
+</form>
+      <div id="form-feedback" class="hidden"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p> Itamar Junior - Todos os direitos reservados. &copy; 2024</p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
